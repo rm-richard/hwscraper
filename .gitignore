@@ -1,0 +1,23 @@
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
+
+# Inclusions
+!lib/**
+
+# Compiled Files
+*.class
+bin/
+build/
+/bin1/
+java/build/**
+
+# Config containing PW
+src/main/resources/application.yml

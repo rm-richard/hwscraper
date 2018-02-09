@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        body {
+            font-family: "Lucida Console", Monaco, monospace
+        }
+
+        table {
+            color: #333;
+            width: 80%;
+            border-collapse:
+            collapse; border-spacing: 0;
+            margin-bottom: 25px;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+
+        td, th {
+            border: 1px solid; /* No more visible border */
+            height: 30px;
+            padding: 0 10px 0 10px;
+        }
+
+        td {
+            background: #FAFAFA;
+        }
+
+        tr:nth-child(even) td { background: #F1F1F1; }
+        tr:nth-child(odd) td { background: #FEFEFE; }
+    </style>
+</head>
+<body>
+    <h2>hardverapro.hu találatok</h2>
+    <table th:each="search : ${searches}" style="text-align: left;">
+        <tr style="background: #c6d0f2">
+            <th colspan="3" th:text="${search.name}">Fejléc a keresés nevével</th>
+        </tr>
+        <tr style="background: #edd7b1">
+            <th>Hírdetés címe</th>
+            <th>Város</th>
+            <th style="width: 80px">Ár</th>
+        </tr>
+        <tr th:each="result : ${search.results}">
+            <td><a th:href="${result.fullLink}" th:text="${result.title}" href="http://google.com">Teszt hírdetés címe!!!</a></td>
+            <td th:text="${result.city}">Budapest</td>
+            <td class="price" th:text="${result.price}">50 000 Ft</td>
+        </tr>
+    </table>
+</body>
+</html>

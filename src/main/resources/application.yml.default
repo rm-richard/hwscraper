@@ -1,0 +1,33 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: your_mail_or_username@gmail.com
+    password: yourPassword
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+recipient: your_mail@gmail.com
+subject: hardverapro search results
+baseUrl: https://hardverapro.hu/
+userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+  (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
+searchDelay: 2000
+
+searches:
+  - name: Bose QC füles
+    url: "https://hardverapro.hu/?kategoria_gyartokhoz=&hirdetesVaros=-1&hirdetesTipusa=-1&\
+      GYORSKERESO_TOKEN=J2CN148BCC7N24BMAHCG&gyorskereses=quietComfort&gyorskereses_hidden=Gyorskeres%C3%A9s%3A+"
+  - name: Sony MDR füles
+    url: "https://hardverapro.hu/?kategoria_gyartokhoz=&hirdetesVaros=-1&hirdetesTipusa=-1&\
+      GYORSKERESO_TOKEN=J2CN148BCC7N24BMAHCG&gyorskereses=Sony+MDR+1000&gyorskereses_hidden=Gyorskeres%C3%A9s%3A+"
+  - name: Ath M50x füles
+    url: "https://hardverapro.hu/?kategoria_gyartokhoz=&hirdetesVaros=-1&hirdetesTipusa=-1&\
+      GYORSKERESO_TOKEN=JECCE6J3ACKB9B896DE8&gyorskereses=m50x&gyorskereses_hidden=Gyorskeres%C3%A9s%3A+"
+  - name: Ath M40x füles
+    url: "https://hardverapro.hu/?kategoria_gyartokhoz=&hirdetesVaros=-1&hirdetesTipusa=-1&\
+      GYORSKERESO_TOKEN=JECCE6J3ACKB9B896DE8&gyorskereses=m40x&gyorskereses_hidden=Gyorskeres%C3%A9s%3A+"
