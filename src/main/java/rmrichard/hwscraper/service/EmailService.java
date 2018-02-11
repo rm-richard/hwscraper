@@ -12,7 +12,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import rmrichard.hwscraper.Properties;
-import rmrichard.hwscraper.model.Search;
+import rmrichard.hwscraper.model.SearchResult;
 
 @Component
 public class EmailService {
@@ -26,12 +26,12 @@ public class EmailService {
     @Autowired
     private TemplateEngine templateEngine;
 
-    public void sendEmail(List<Search> searches) {
+    public void sendEmail(List<SearchResult> searchResults) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(properties.getRecipient());
             messageHelper.setSubject(properties.getSubject());
-            messageHelper.setText(createContent(searches), true);
+            messageHelper.setText(createContent(searchResults), true);
         };
 
         try {
@@ -41,9 +41,9 @@ public class EmailService {
         }
     }
 
-    private String createContent(List<Search> searches) {
+    private String createContent(List<SearchResult> searchResults) {
         Context ctx = new Context();
-        ctx.setVariable("searches", searches);
+        ctx.setVariable("searchResults", searchResults);
         String htmlContent = templateEngine.process("email", ctx);
         return htmlContent;
     }

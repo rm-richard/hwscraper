@@ -18,7 +18,7 @@ userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
   (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
 searchDelay: 2000
 
-searches:
+searchTasks:
   - name: Bose QC füles
     url: "https://hardverapro.hu/?kategoria_gyartokhoz=&hirdetesVaros=-1&hirdetesTipusa=-1&\
       GYORSKERESO_TOKEN=J2CN148BCC7N24BMAHCG&gyorskereses=quietComfort&gyorskereses_hidden=Gyorskeres%C3%A9s%3A+"

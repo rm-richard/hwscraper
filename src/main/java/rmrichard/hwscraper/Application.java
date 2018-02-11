@@ -12,7 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import rmrichard.hwscraper.model.Ad;
-import rmrichard.hwscraper.model.Search;
+import rmrichard.hwscraper.model.SearchResult;
+import rmrichard.hwscraper.model.SearchTask;
 import rmrichard.hwscraper.service.EmailService;
 import rmrichard.hwscraper.service.Scraper;
 
@@ -37,15 +38,15 @@ public class Application {
     @Bean
     public CommandLineRunner commandLineRunner() {
         return args -> {
-            List<Search> searchResults = new ArrayList<>();
+            List<SearchResult> searchResults = new ArrayList<>();
 
-            List<Search> searches = properties.getSearches();
-            for (Search search : searches) {
-                logger.info("Executing search for \"{}\"...", search.getName());
-                List<Ad> ads = scraper.scrapePage(search.getUrl());
+            List<SearchTask> searchTasks = properties.getSearchTasks();
+            for (SearchTask searchTask : searchTasks) {
+                logger.info("Executing search for \"{}\"...", searchTask.getName());
+                List<Ad> ads = scraper.scrapePage(searchTask.getUrl());
                 logger.info("{} results found", ads.size());
                 if (ads.size() > 0) {
-                    searchResults.add(new Search(search.getName(), search.getUrl(), ads));
+                    searchResults.add(new SearchResult(searchTask.getName(), ads));
                 }
                 logger.info("Waiting {} millisecs after search...", properties.getSearchDelay());
                 waitFor(properties.getSearchDelay());

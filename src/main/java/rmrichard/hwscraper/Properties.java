@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import rmrichard.hwscraper.model.Search;
+import rmrichard.hwscraper.model.SearchTask;
 
 @Component
 @ConfigurationProperties
@@ -16,7 +16,7 @@ public class Properties {
     private String baseUrl;
     private String userAgent;
     private Long searchDelay;
-    private List<Search> searches;
+    private List<SearchTask> searchTasks;
 
     public String getRecipient() {
         return recipient;
@@ -58,12 +58,12 @@ public class Properties {
         this.searchDelay = searchDelay;
     }
 
-    public List<Search> getSearches() {
-        return searches;
+    public List<SearchTask> getSearchTasks() {
+        return searchTasks;
     }
 
-    public void setSearches(List<Search> searches) {
-        this.searches = searches;
+    public void setSearchTasks(List<SearchTask> searchTasks) {
+        this.searchTasks = searchTasks;
     }
 
 }
