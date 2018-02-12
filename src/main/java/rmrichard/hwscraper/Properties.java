@@ -2,6 +2,8 @@ package rmrichard.hwscraper;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +19,12 @@ public class Properties {
     private String userAgent;
     private Long searchDelay;
     private List<SearchTask> searchTasks;
+    private String dbFile;
+
+    @PostConstruct
+    public void initializeDefaults() {
+        dbFile = dbFile != null ? dbFile : "ads.db";
+    }
 
     public String getRecipient() {
         return recipient;
@@ -66,4 +74,11 @@ public class Properties {
         this.searchTasks = searchTasks;
     }
 
+    public String getDbFile() {
+        return dbFile;
+    }
+
+    public void setDbFile(String dbFile) {
+        this.dbFile = dbFile;
+    }
 }

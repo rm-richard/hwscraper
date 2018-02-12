@@ -49,20 +49,12 @@ public class Application {
                     searchResults.add(new SearchResult(searchTask.getName(), ads));
                 }
                 logger.info("Waiting {} millisecs after search...", properties.getSearchDelay());
-                waitFor(properties.getSearchDelay());
+                Thread.sleep(properties.getSearchDelay());
             }
 
             logger.info("Search over, sending results mail...");
             emailService.sendEmail(searchResults);
             logger.info("Mail sent.");
         };
-    }
-
-    private void waitFor(long ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            // dont care
-        }
     }
 }

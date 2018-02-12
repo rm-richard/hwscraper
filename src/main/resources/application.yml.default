@@ -4,12 +4,8 @@ spring:
     port: 587
     username: your_mail_or_username@gmail.com
     password: yourPassword
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
 
 recipient: your_mail@gmail.com
 subject: hardverapro search results
@@ -17,6 +13,7 @@ baseUrl: https://hardverapro.hu/
 userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
   (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
 searchDelay: 2000
+dbFile: ads.db
 
 searchTasks:
   - name: Bose QC füles
