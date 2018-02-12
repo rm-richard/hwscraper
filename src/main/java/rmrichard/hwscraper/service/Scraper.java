@@ -32,7 +32,7 @@ public class Scraper {
         return adResults;
     }
 
-    private Document openPage(String url) {
+    protected Document openPage(String url) {
         try {
             return Jsoup.connect(url).userAgent(properties.getUserAgent()).get();
         } catch (IOException ex) {
