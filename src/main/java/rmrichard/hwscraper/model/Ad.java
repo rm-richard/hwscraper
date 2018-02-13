@@ -14,7 +14,7 @@ public class Ad {
     private final String fullLink;
     private final String price;
     private final String city;
-    private Boolean isNew;
+    private Boolean isNew = false;
 
     @JsonCreator
     public Ad(@JsonProperty("title") String title,

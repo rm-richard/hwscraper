@@ -31,7 +31,7 @@ public class AdRepository {
 
         replaceSavedAds(db, ads.stream().toArray(Ad[]::new));
         db.commit();
-        db.close();
+        closeDb(db);
         return newAdCount;
     }
 
@@ -46,10 +46,14 @@ public class AdRepository {
         repository.insert(ads);
     }
 
-    private Nitrite openDb() {
+    protected Nitrite openDb() {
         return Nitrite.builder()
             .compressed()
             .filePath(properties.getDbFile())
             .openOrCreate();
+    }
+
+    protected void closeDb(Nitrite db) {
+        db.close();
     }
 }
