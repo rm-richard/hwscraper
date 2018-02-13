@@ -19,6 +19,11 @@
             font-weight: bold;
         }
 
+        .newAd {
+            color: red;
+            font-weight: bold;
+        }
+
         td, th {
             border: 1px solid; /* No more visible border */
             height: 30px;
@@ -27,6 +32,7 @@
 
         td {
             background: #FAFAFA;
+            padding: 5px 10px 5px 10px;
         }
 
         tr:nth-child(even) td { background: #F1F1F1; }
@@ -42,10 +48,13 @@
         <tr style="background: #edd7b1">
             <th>Hírdetés címe</th>
             <th>Város</th>
-            <th style="width: 80px">Ár</th>
+            <th style="width: 100px">Ár</th>
         </tr>
         <tr th:each="result : ${searchResult.results}">
-            <td><a th:href="${result.fullLink}" th:text="${result.title}" href="http://google.com">Teszt hírdetés címe!!!</a></td>
+            <td>
+                <span th:if="${result.isNew}" class="newAd">ÚJ!</span>
+                <a th:href="${result.fullLink}" th:text="${result.title}" href="http://google.com">Teszt hírdetés címe!!!</a>
+            </td>
             <td th:text="${result.city}">Budapest</td>
             <td class="price" th:text="${result.price}">50 000 Ft</td>
         </tr>

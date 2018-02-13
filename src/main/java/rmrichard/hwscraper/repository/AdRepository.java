@@ -3,6 +3,7 @@ package rmrichard.hwscraper.repository;
 import java.util.List;
 
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,22 +17,33 @@ public class AdRepository {
     @Autowired
     private Properties properties;
 
-    public List<Ad> getAds() {
+    public int updateAndMarkNew(List<Ad> ads) {
         Nitrite db = openDb();
-        List<Ad> ads = db.getRepository(Ad.class).find().toList();
+        List<Ad> savedAds = getAds(db);
+
+        int newAdCount = 0;
+        for (Ad ad : ads) {
+            if (!savedAds.contains(ad)) {
+                ad.setIsNew(true);
+                newAdCount += 1;
+            }
+        }
+
+        replaceSavedAds(db, ads.stream().toArray(Ad[]::new));
+        db.commit();
         db.close();
+        return newAdCount;
+    }
+
+    private List<Ad> getAds(Nitrite db) {
+        List<Ad> ads = db.getRepository(Ad.class).find().toList();
         return ads;
     }
 
-    public void save(Ad... ads) {
-        Nitrite db = openDb();
+    private void replaceSavedAds(Nitrite db, Ad... ads) {
         ObjectRepository<Ad> repository = db.getRepository(Ad.class);
-
-        for (Ad ad : ads) {
-            repository.update(ad, true);
-        }
-
-        db.close();
+        repository.remove((ObjectFilter) null);
+        repository.insert(ads);
     }
 
     private Nitrite openDb() {

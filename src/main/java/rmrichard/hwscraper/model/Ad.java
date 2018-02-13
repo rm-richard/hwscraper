@@ -1,5 +1,7 @@
 package rmrichard.hwscraper.model;
 
+import java.beans.Transient;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -7,11 +9,12 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.dizitart.no2.objects.Id;
 
 public class Ad {
-    public final String title;
+    private final String title;
     @Id
-    public final String fullLink;
-    public final String price;
-    public final String city;
+    private final String fullLink;
+    private final String price;
+    private final String city;
+    private Boolean isNew;
 
     @JsonCreator
     public Ad(@JsonProperty("title") String title,
@@ -38,6 +41,15 @@ public class Ad {
 
     public String getCity() {
         return city;
+    }
+
+    @Transient
+    public Boolean getIsNew() {
+        return isNew;
+    }
+
+    public void setIsNew(Boolean aNew) {
+        isNew = aNew;
     }
 
     @Override
