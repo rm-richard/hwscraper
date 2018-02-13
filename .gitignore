@@ -21,3 +21,5 @@ java/build/**
 
 # Config containing PW
 src/main/resources/application.yml
+# db file
+ads.db
