@@ -24,11 +24,13 @@ Every search has an arbitrary title and a a search URL, which is simply copied f
 browser after perfming a search on the site.
 Eg.:
 
+```
 searchTasks:
   - name: Any title for the search
     url: https://harverapro.hu/?....
   - name: Second search
     url: https://harverapro.hu/?....
+```
 
 ## Example mail output
 ![Example mail](mail_body_example.png?raw=true "Example mail")
