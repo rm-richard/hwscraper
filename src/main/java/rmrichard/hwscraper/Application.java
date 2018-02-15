@@ -56,6 +56,7 @@ public class Application {
                 emailService.sendEmail(searchResults);
                 logger.info("Mail sent");
             } else {
+                emailService.sendEmail(searchResults);
                 logger.info("No new ads, skipping mail sending");
             }
         };
