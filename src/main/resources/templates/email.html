@@ -4,14 +4,14 @@
     <meta charset="UTF-8"/>
     <style>
         body {
-            font-family: "Lucida Console", Monaco, monospace
+            font-family: "Lucida Console", Monaco, monospace !important;
         }
 
         table {
             color: #333;
             width: 80%;
-            border-collapse:
-            collapse; border-spacing: 0;
+            border-collapse: collapse !important;
+            border-spacing: 0;
             margin-bottom: 25px;
         }
 
@@ -25,27 +25,25 @@
         }
 
         td, th {
-            border: 1px solid; /* No more visible border */
+            border: 1px solid black !important;
             height: 30px;
             padding: 0 10px 0 10px;
         }
 
         td {
-            background: #FAFAFA;
+            background: #FAFAFA !important;
             padding: 5px 10px 5px 10px;
+            border: 1px solid black;
         }
-
-        tr:nth-child(even) td { background: #F1F1F1; }
-        tr:nth-child(odd) td { background: #FEFEFE; }
     </style>
 </head>
 <body>
     <h2>hardverapro.hu találatok</h2>
     <table th:each="searchResult : ${searchResults}" style="text-align: left;">
-        <tr style="background: #c6d0f2">
+        <tr style="background: #434343; color: white">
             <th colspan="3" th:text="${searchResult.name}">Fejléc a keresés nevével</th>
         </tr>
-        <tr style="background: #edd7b1">
+        <tr style="background: #646464; color: white">
             <th>Hírdetés címe</th>
             <th>Város</th>
             <th style="width: 100px">Ár</th>
