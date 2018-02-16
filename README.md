@@ -18,7 +18,7 @@ The following configuration properties are mandatory.
 | searchTasks        | List of search links, see below                            |
 
 ### searchTasks format
-Every search has an arbitrary title and a a search URL, which is simply copied from the
+Every search has an arbitrary title and a search URL, which is simply copied from the
 browser after perfming a search on the site.
 Eg.:
 
@@ -38,6 +38,14 @@ searchTasks:
 | searchDelay        | Time to wait between performing the searches. Default: 2s. |
 | dbFile             | File path of the saved saved ads. Default: ads.db          |
 | alwaysSendMail     | If set true, a result mail will be sent even if there are no new ads. Default: false |
+
+## Build and run
+Requires JDK8 and Maven. Copy and configure the sample application.yml.default file.
+
+```sh
+ $ mvn clean install
+ $ java -jar target/hwscaper.jar --spring.config.location=src/main/resources/application.yml
+```
 
 ## Example mail output
 ![Example mail](mail_body_example.png?raw=true "Example mail")
