@@ -39,7 +39,6 @@ public class ScraperTest {
         String html = IOUtils.toString(getClass().getResourceAsStream(SAMPLE_PAGE));
 
         doReturn(Jsoup.parse(html)).when(scraperSpy).openPage(any());
-        when(properties.getBaseUrl()).thenReturn("localhost:/");
 
         // WHEN
         List<Ad> ads = scraperSpy.scrapePage(SAMPLE_PAGE);

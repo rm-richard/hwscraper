@@ -13,17 +13,26 @@ import rmrichard.hwscraper.model.SearchTask;
 @ConfigurationProperties
 public class Properties {
 
+    private static final String DEFAULT_DB_FILE = "ads.db";
+    private static final String DEFAULT_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        + " (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36";
+    private static final Long DEFAULT_SEARCH_DELAY = 2000L;
+    private static final Boolean DEFAULT_ALWAYS_SEND_MAIL = false;
+
     private String recipient;
     private String subject;
-    private String baseUrl;
     private String userAgent;
     private Long searchDelay;
     private List<SearchTask> searchTasks;
     private String dbFile;
+    private Boolean alwaysSendMail;
 
     @PostConstruct
     public void initializeDefaults() {
-        dbFile = dbFile != null ? dbFile : "ads.db";
+        dbFile = dbFile != null ? dbFile : DEFAULT_DB_FILE;
+        searchDelay = searchDelay != null ? searchDelay : DEFAULT_SEARCH_DELAY;
+        userAgent = userAgent != null ? userAgent : DEFAULT_USER_AGENT;
+        alwaysSendMail = alwaysSendMail != null ? alwaysSendMail : DEFAULT_ALWAYS_SEND_MAIL;
     }
 
     public String getRecipient() {
@@ -40,14 +49,6 @@ public class Properties {
 
     public void setSubject(String subject) {
         this.subject = subject;
-    }
-
-    public String getBaseUrl() {
-        return baseUrl;
-    }
-
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
     }
 
     public String getUserAgent() {
@@ -80,5 +81,13 @@ public class Properties {
 
     public void setDbFile(String dbFile) {
         this.dbFile = dbFile;
+    }
+
+    public Boolean getAlwaysSendMail() {
+        return alwaysSendMail;
+    }
+
+    public void setAlwaysSendMail(Boolean alwaysSendMail) {
+        this.alwaysSendMail = alwaysSendMail;
     }
 }

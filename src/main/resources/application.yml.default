@@ -9,11 +9,6 @@ spring:
 
 recipient: your_mail@gmail.com
 subject: hardverapro search results
-baseUrl: https://hardverapro.hu/
-userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-  (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
-searchDelay: 2000
-dbFile: ads.db
 
 searchTasks:
   - name: Bose QC füles

@@ -51,12 +51,11 @@ public class Application {
                     .collect(Collectors.toList())
             );
 
-            if (newAdCount > 0) {
+            if (newAdCount > 0 || properties.getAlwaysSendMail()) {
                 logger.info("{} new ads seen, sending results mail...", newAdCount);
                 emailService.sendEmail(searchResults);
                 logger.info("Mail sent");
             } else {
-                emailService.sendEmail(searchResults);
                 logger.info("No new ads, skipping mail sending");
             }
         };

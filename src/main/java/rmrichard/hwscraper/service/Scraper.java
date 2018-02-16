@@ -17,6 +17,8 @@ import rmrichard.hwscraper.model.Ad;
 @Component
 public class Scraper {
 
+    private static final String BASE_URL = "https://hardverapro.hu/";
+
     @Autowired
     private Properties properties;
 
@@ -42,7 +44,7 @@ public class Scraper {
 
     private Ad parseRow(Element row) {
         Element titleContainer = row.selectFirst(".glvc3>h5>a");
-        String url = properties.getBaseUrl() + titleContainer.attr("href");
+        String url = BASE_URL + titleContainer.attr("href");
         String title = titleContainer.text();
 
         Element priceContainer = row.selectFirst(".right>.global_list_pdc");
