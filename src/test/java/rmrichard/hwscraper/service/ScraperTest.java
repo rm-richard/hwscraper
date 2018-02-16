@@ -46,6 +46,6 @@ public class ScraperTest {
         // THEN
         verify(scraperSpy, times(1)).openPage(SAMPLE_PAGE);
         assertEquals(5, ads.size());
-        assertEquals("localhost:/apro/uj_bontatlan_bose_quietcomfort_25_qc25_fekete", ads.get(0).getFullLink());
+        assertEquals("https://hardverapro.hu/apro/uj_bontatlan_bose_quietcomfort_25_qc25_fekete", ads.get(0).getFullLink());
     }
 }
