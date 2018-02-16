@@ -16,6 +16,7 @@
         }
 
         .price {
+            width: 100px !important;
             font-weight: bold;
         }
 
@@ -42,11 +43,6 @@
     <table th:each="searchResult : ${searchResults}" style="text-align: left;">
         <tr style="background: #434343; color: white">
             <th colspan="3" th:text="${searchResult.name}">Fejléc a keresés nevével</th>
-        </tr>
-        <tr style="background: #646464; color: white">
-            <th>Hírdetés címe</th>
-            <th>Város</th>
-            <th style="width: 100px">Ár</th>
         </tr>
         <tr th:each="result : ${searchResult.results}">
             <td>
