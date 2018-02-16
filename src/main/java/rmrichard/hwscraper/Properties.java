@@ -28,7 +28,21 @@ public class Properties {
     private Boolean alwaysSendMail;
 
     @PostConstruct
-    public void initializeDefaults() {
+    public void setup() {
+        validateMandatoryParams();
+        initializeDefaults();
+    }
+
+    private void validateMandatoryParams() {
+        if (recipient == null || subject == null) {
+            throw new IllegalArgumentException("Property \"recipient\" or \"subject\" not configured");
+        }
+        if (searchTasks == null || searchTasks.isEmpty()) {
+            throw new IllegalArgumentException("No searchTasks configured");
+        }
+    }
+
+    private void initializeDefaults() {
         dbFile = dbFile != null ? dbFile : DEFAULT_DB_FILE;
         searchDelay = searchDelay != null ? searchDelay : DEFAULT_SEARCH_DELAY;
         userAgent = userAgent != null ? userAgent : DEFAULT_USER_AGENT;
