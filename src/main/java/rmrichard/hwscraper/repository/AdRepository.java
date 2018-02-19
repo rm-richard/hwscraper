@@ -43,7 +43,9 @@ public class AdRepository {
     private void replaceSavedAds(Nitrite db, Ad... ads) {
         ObjectRepository<Ad> repository = db.getRepository(Ad.class);
         repository.remove((ObjectFilter) null);
-        repository.insert(ads);
+        for (Ad ad : ads) {
+            repository.update(ad, true);
+        }
     }
 
     protected Nitrite openDb() {
